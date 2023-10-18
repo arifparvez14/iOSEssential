@@ -14,13 +14,11 @@ protocol AuthValidatorProtocol {
       func doPasswordsMatch(password: String?, repeatPassword: String?) -> Bool
 }
 
-struct AuthConstants {
-    static let firstNameMinLength = 2
-    static let firstNameMaxLength = 10
-    static let lastNameMinLength = 2
-    static let lastNameMaxLength = 12
-    static let passwordMinLength = 5
-    static let passwordMaxLength = 16
+enum AuthError: String, Error {
+    case nameValidationError = "Name should be within 5 to 15 character"
+    case emailValidationError = "Invalid Email address"
+    case passwordValidationError = "Password length should be withon 5 to 15 character"
+    case matchPasswordValidationError = "Password didn't match"
 }
 
 struct AuthCredentials {
@@ -32,10 +30,13 @@ struct AuthCredentials {
 
 class AuthValidator: AuthValidatorProtocol {
     
+    let minLength = 5
+    let maxLength = 15
+    
     func nameValid(name: String?) -> Bool {
         guard let name = name else { return false }
         
-        if name.count < AuthConstants.firstNameMinLength || name.count > AuthConstants.firstNameMaxLength {
+        if name.count < minLength || name.count > maxLength {
             return false
         }
         return true
@@ -49,7 +50,7 @@ class AuthValidator: AuthValidatorProtocol {
     func isPasswordValid(password: String?) -> Bool {
         guard let password = password else { return false }
         
-        if password.count < AuthConstants.passwordMinLength || password.count > AuthConstants.passwordMaxLength {
+        if password.count < minLength || password.count > maxLength {
             return false
         }
         return true

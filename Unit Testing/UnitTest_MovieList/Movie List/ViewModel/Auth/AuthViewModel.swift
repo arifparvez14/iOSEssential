@@ -19,7 +19,9 @@ protocol AuthViewModelProtocol {
     var viewDelegate: AuthViewDelegate? { get set}
     var coordinatorDelegate: AuthCoordinationDelegate? { get set }
     func submit(authCredentials: AuthCredentials)
+    func submit(authCredentials: AuthCredentials, onCompletion: (String?) -> ())
 }
+
 
 class AuthViewModel: AuthViewModelProtocol {
     
@@ -31,15 +33,32 @@ class AuthViewModel: AuthViewModelProtocol {
         self.authValidator = authValidator
     }
     
+    func submit(authCredentials: AuthCredentials, onCompletion: (String?) -> ()) {
+        if !authValidator.nameValid(name: authCredentials.name) {
+            onCompletion(AuthError.nameValidationError.rawValue)
+        } else if !authValidator.isValidEmailFormat(email: authCredentials.email) {
+            onCompletion(AuthError.emailValidationError.rawValue)
+        } else if !authValidator.isPasswordValid(password: authCredentials.password) {
+            onCompletion(AuthError.passwordValidationError.rawValue)
+        } else if !authValidator.doPasswordsMatch(password: authCredentials.password, repeatPassword: authCredentials.confirmPassword) {
+            onCompletion(AuthError.matchPasswordValidationError.rawValue)
+        } else {
+            UserDefaults.standard.set(true, forKey: "isLoggedIn")
+            coordinatorDelegate?.authCoordinatorDidFinish(viewModel: self)
+            onCompletion(nil)
+        }
+    }
+    
     func submit(authCredentials: AuthCredentials) {
         if !authValidator.nameValid(name: authCredentials.name) {
-            viewDelegate?.validationError(errorMessage: "Name should between 2 to 8 character ")
+            viewDelegate?.validationError(errorMessage: AuthError.nameValidationError.rawValue)
         } else if !authValidator.isValidEmailFormat(email: authCredentials.email) {
-            viewDelegate?.validationError(errorMessage: "Email validation error")
+            viewDelegate?.validationError(errorMessage: AuthError.emailValidationError
+                .rawValue)
         } else if !authValidator.isPasswordValid(password: authCredentials.password) {
-            viewDelegate?.validationError(errorMessage: "Invalid password")
+            viewDelegate?.validationError(errorMessage: AuthError.passwordValidationError.rawValue)
         } else if !authValidator.doPasswordsMatch(password: authCredentials.password, repeatPassword: authCredentials.confirmPassword) {
-            viewDelegate?.validationError(errorMessage: "Password didn't match")
+            viewDelegate?.validationError(errorMessage: AuthError.matchPasswordValidationError.rawValue)
         } else {
             UserDefaults.standard.set(true, forKey: "isLoggedIn")
             coordinatorDelegate?.authCoordinatorDidFinish(viewModel: self)

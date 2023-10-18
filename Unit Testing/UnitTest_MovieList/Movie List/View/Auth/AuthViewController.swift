@@ -36,7 +36,14 @@ class AuthViewController: UIViewController {
             password: passwordField.text,
             confirmPassword: confirmPasswordField.text)
         
-        viewModel?.submit(authCredentials: credentials)
+        //viewModel?.submit(authCredentials: credentials)
+        viewModel?.submit(authCredentials: credentials) { (error) in
+            if let error = error {
+                errorMessageLabel.isHidden = false
+                errorMessageLabel.text = error
+            }
+        }
+        
     }
 }
 
