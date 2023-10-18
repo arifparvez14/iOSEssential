@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "47B9F271-96CA-497D-A150-1F27B134330E",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:TestingDemo.xcodeproj",
+      "identifier" : "89F7458F2A945D890029B6D0",
+      "name" : "TestingDemo"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:TestingDemo.xcodeproj",
+        "identifier" : "898111BF2A949BF20002E424",
+        "name" : "TestingDemoTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:TestingDemo.xcodeproj",
+        "identifier" : "89525BB92A94B4A20059A0D1",
+        "name" : "LoginScreenUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
