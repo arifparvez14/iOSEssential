@@ -12,11 +12,12 @@ protocol HomeCoordinatorDelegate: AnyObject {
 }
 
 class HomeCoordinator: Coordinator {
-
+    
     weak var delegate: HomeCoordinatorDelegate?
     let navigationController: UINavigationController
     var viewModel = MovieViewModel(clientService: ClientService())
     var detailcoordinator: DetailCoordinator?
+    var cartCoordinator: CartCoordinator?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -34,7 +35,9 @@ class HomeCoordinator: Coordinator {
 
 extension HomeCoordinator: MovieViewModelCoordinationDelegate {
     func didTapOnCart(viewModel: MovieViewModel) {
-        print("Cart Tapped")
+        cartCoordinator = CartCoordinator(viewModel: self.viewModel, navigationController: self.navigationController)
+        cartCoordinator?.delegate = self
+        cartCoordinator?.start()
     }
     
     func didTapOnMovie(viewModel: MovieViewModel, selectedItem: Int) {
@@ -47,5 +50,11 @@ extension HomeCoordinator: MovieViewModelCoordinationDelegate {
 extension HomeCoordinator: DetailCoordinatorDelegate {
     func detailCoordinatorDidFinish(detailCoordinator: DetailCoordinator) {
         print("Detail coordinator back button pressed")
+    }
+}
+
+extension HomeCoordinator: CartCoordinatorDelegate{
+    func cartCoordinatorDidFinish(cartCoordinator: CartCoordinator) {
+        print("Cart coordinator back button pressed")
     }
 }

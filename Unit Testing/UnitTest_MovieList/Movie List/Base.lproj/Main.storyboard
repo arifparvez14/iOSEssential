@@ -59,6 +59,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapOnCart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Wb-g9-fV0"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -146,7 +149,7 @@
         <!--Cart View Controller-->
         <scene sceneID="KZk-9w-TOs">
             <objects>
-                <viewController storyboardIdentifier="CartViewController" id="ApE-7m-j5l" customClass="CartViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartViewController" id="ApE-7m-j5l" customClass="CartViewController" customModule="Movie_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CmY-cq-cFB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

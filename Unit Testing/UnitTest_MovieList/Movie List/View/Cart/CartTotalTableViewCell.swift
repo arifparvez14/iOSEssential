@@ -9,15 +9,13 @@ import UIKit
 
 class CartTotalTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var totalDuration: UILabel!
+    @IBOutlet weak var totalCount: UILabel!
     
+    func setupCell(movieCount: Int, movieDuration: Int) {
+        containerView.layer.cornerRadius = 10
+        totalCount.text = "Total Movie: \(movieCount)"
+        totalDuration.text = "Duration: \(movieDuration)"
+    }
 }

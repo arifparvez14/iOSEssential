@@ -20,6 +20,8 @@ let kQueryDefaultValue = "marvel"
 let viewTitle = "Movie List"
 let tableViewCellName = "MovieTableViewCell"
 let defaultThumbnailImageName = "Default_Image_Thumbnail"
+let cartTableViewCellName = "CartTableViewCell"
+let cartTotalTableViewCellName = "CartTotalTableViewCell"
 
 //MARK: NUMBERS
 let posterImageWidth: CGFloat = 120

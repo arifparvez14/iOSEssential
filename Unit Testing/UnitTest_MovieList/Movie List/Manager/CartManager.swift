@@ -34,8 +34,8 @@ final class CartManager {
 
     private init() {}
 
-    private lazy var cart = [MovieResult]()
-    private lazy var subscribers = [CartSubscriber]()
+    private var cart = [MovieResult]()
+    private var subscribers = [CartSubscriber]()
 
     func add(subscriber: CartSubscriber) {
         subscribers.append(subscriber)
@@ -55,6 +55,10 @@ final class CartManager {
         guard let index = cart.firstIndex(where: { $0.id == movieResult.id }) else { return }
         cart.remove(at: index)
         notifySubscribers()
+    }
+    
+    func getCartItems() -> [MovieResult] {
+        return cart
     }
 
     private func notifySubscribers() {

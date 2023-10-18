@@ -9,13 +9,12 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!
     @IBOutlet weak var noItemView: UIView!
+    @IBOutlet weak var barButton: UIButton!
     
     private var searchController = UISearchController()
     private var spinner = UIActivityIndicatorView()
     var viewModel: MovieViewModelProtocol?
-    
-    @IBOutlet weak var barButton: UIButton!
-    var badge: BadgeView?
+    private var badge: BadgeView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +87,10 @@ class ViewController: UIViewController {
         view.isUserInteractionEnabled = false
         return spinner
     }
+    
+    @IBAction func didTapOnCart(_ sender: Any) {
+        viewModel?.didTapOnCart()
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -123,6 +126,8 @@ extension ViewController: CartSubscriber {
     func accept(changed cartCount: Int) {
         if cartCount >= 1 {
             badge?.showBadge(withCount: cartCount)
+        } else {
+            badge?.removeBadge()
         }
     }
 }

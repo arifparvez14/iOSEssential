@@ -12,39 +12,30 @@ protocol CartCoordinatorDelegate: AnyObject {
 }
 
 class CartCoordinator: Coordinator {
-    
-    var navigationController: UINavigationController
 
-    init(navigationController: UINavigationController) {
+    var navigationController: UINavigationController
+    var viewModel: MovieViewModel
+    weak var delegate: CartCoordinatorDelegate?
+
+    init(viewModel: MovieViewModel, navigationController: UINavigationController) {
+        self.viewModel = viewModel
         self.navigationController = navigationController
     }
     
     func start() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        listViewController = storyboard.instantiateViewController(withIdentifier: "ListViewController") as? ListViewController
-//            
-//        guard let listViewController = listViewController else { return }
-//        
-//        let viewModel = MVVMCListViewModel()
-//        viewModel.model = ListModel()
-//        viewModel.coordinatorDelegate = self
-//        listViewController.viewModel = viewModel
-//        navigationController.pushViewController(listViewController, animated: true)
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "CartViewController") as? CartViewController {
+            viewModel.cartCoordinatorDelegate = self
+            vc.viewModel = viewModel
+            navigationController.pushViewController(vc, animated: true)
+        }
     }
 }
-//
-//extension ListCoordinator: ListViewModelCoordinatorDelegate {
-//    func listViewModelDidSelectData(_ viewModel: ListViewModel, data: DataItem) {
-//        detailCoordinator = DetailCoordinator(dataItem: data, navigationController: navigationController)
-//        detailCoordinator?.delegate = self
-//        detailCoordinator?.start()
-//    }
-//}
-//
-//extension ListCoordinator: DetailCoordinatorDelegate {
-//    func detailCoordinatorDidFinish(detailCoordinator: DetailCoordinator) {
-//        self.detailCoordinator = nil
-//        navigationController.popViewController(animated: true)
-//    }
-//}
+
+extension CartCoordinator: MovieCartCoordinatorDelegate {
+    func cartCoordinatorDidFinish(viewModel: MovieViewModel) {
+        print("Cart coordination did finish")
+        delegate?.cartCoordinatorDidFinish(cartCoordinator: self)
+    }
+}
+

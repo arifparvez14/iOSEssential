@@ -52,7 +52,7 @@ class MoviewDetailsViewController: UIViewController {
             addToCartButton.isEnabled = false
             addToCartButton.setTitle("Already added to favorite list", for: .normal)
             viewModel?.setAddItemToTheCartPropertTrue(for: selectedItem ?? 0)
-            viewModel?.addMovieItemOnCart(usign: selectedItem ?? 0)
+            viewModel?.addMovieItemOnCart(usign: movieInfo?.id ?? 0)
         }
     }
 }

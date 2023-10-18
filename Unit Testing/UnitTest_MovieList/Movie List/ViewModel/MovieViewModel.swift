@@ -15,16 +15,27 @@ protocol MovieDetailCoordinatorDelegate: AnyObject {
     func detailCoordinatorDidFinish(viewModel: MovieViewModel)
 }
 
+protocol MovieCartCoordinatorDelegate: AnyObject {
+    func cartCoordinatorDidFinish(viewModel: MovieViewModel)
+}
+
 protocol MovieViewModelProtocol {
     var movieList: Bindable<[MovieResult]> { get }
     var movieListFetchStatus: Bindable<Bool> { get }
     func searchMovie(withQueryString query: String?)
     var coordinatorDelegate: MovieViewModelCoordinationDelegate? { get set }
     var detailCoordinatorDelegate: MovieDetailCoordinatorDelegate? { get set }
+    var cartCoordinatorDelegate: MovieCartCoordinatorDelegate? { get set }
     func didTapOnMovieItem(index: Int)
     func getMovieDetail(from selectedIndex: Int) -> MovieResult
     func moviewDetailsVCBackButtonTap()
     func addMovieItemOnCart(usign index: Int)
+    func didTapOnCart()
+    func cartVCBackButtonTap()
+    func getCartItems()
+    func removeCartItems(movieResult: MovieResult)
+    var cartItems: [MovieResult] { get }
+    func getMovieResultItem(by index: Int) -> MovieResult
 }
 
 class MovieViewModel: MovieViewModelProtocol {
@@ -32,8 +43,12 @@ class MovieViewModel: MovieViewModelProtocol {
     var movieListFetchStatus: Bindable<Bool> = Bindable(false)
     var movieList: Bindable<[MovieResult]> = Bindable([])
     var clientService: ClientServiceProtocol
+    
     weak var coordinatorDelegate: MovieViewModelCoordinationDelegate?
     weak var detailCoordinatorDelegate: MovieDetailCoordinatorDelegate?
+    weak var cartCoordinatorDelegate: MovieCartCoordinatorDelegate?
+    var cartItems: [MovieResult] = [MovieResult]()
+    
     
     init(clientService: ClientServiceProtocol) {
         self.clientService = clientService
@@ -50,7 +65,7 @@ class MovieViewModel: MovieViewModelProtocol {
                     returnMovie.cellHeight = self.calculateCellHeight(forItem: movie)
                     returnMovie.posterUrl = URL(string: baseImageUrl + (returnMovie.posterPath ?? "")) ?? nil
                     returnMovie.isAddedOnCart = false
-                    returnMovie.duration = Int.random(in: 100..<140)
+                    returnMovie.duration = Int.random(in: 100..<160)
                     return returnMovie
                 })
                 self.movieListFetchStatus.value = true
@@ -88,7 +103,46 @@ class MovieViewModel: MovieViewModelProtocol {
         detailCoordinatorDelegate?.detailCoordinatorDidFinish(viewModel: self)
     }
     
-    func addMovieItemOnCart(usign index: Int) {
-        CartManager.sharedInstance.add(movieResult: movieList.value[index])
+
+    func addMovieItemOnCart(usign id: Int) {
+        for item in movieList.value {
+            if item.id == id {
+                CartManager.sharedInstance.add(movieResult: item)
+                break
+            }
+        }
+    }
+    
+    //Cart functionality
+    func didTapOnCart() {
+        coordinatorDelegate?.didTapOnCart(viewModel: self)
+    }
+    
+    func cartVCBackButtonTap() {
+        cartCoordinatorDelegate?.cartCoordinatorDidFinish(viewModel: self)
+    }
+    
+    func getCartItems(){
+        cartItems = CartManager.sharedInstance.getCartItems()
+    }
+    
+    func removeCartItems(movieResult: MovieResult) {
+        CartManager.sharedInstance.remove(movieResult: movieResult)
+    }
+    
+    func getMovieResultItem(by index: Int) -> MovieResult {
+        return self.cartItems[index]
+    }
+    
+    func getTotalCountAndDuration() -> (count: Int, duration: Int) {
+        var count = 0
+        var duration = 0
+        
+        for item in cartItems {
+            count = count + 1
+            duration = duration + (item.duration ?? 0)
+        }
+        
+        return(count: count, duration: duration)
     }
 }
