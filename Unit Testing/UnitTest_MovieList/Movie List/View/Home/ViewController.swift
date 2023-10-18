@@ -31,6 +31,7 @@ class ViewController: UIViewController {
             self.viewModel?.searchMovie(withQueryString: nil)
         }
         CartManager.sharedInstance.add(subscriber: self)
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     private func setupBadgeView() {

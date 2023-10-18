@@ -20,6 +20,10 @@
 		85D5BD322ADF0C3900AE32E4 /* CartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D5BD302ADF0C3900AE32E4 /* CartTableViewCell.xib */; };
 		85D5BD392ADF0C6900AE32E4 /* CartTotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5BD372ADF0C6900AE32E4 /* CartTotalTableViewCell.swift */; };
 		85D5BD3A2ADF0C6900AE32E4 /* CartTotalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D5BD382ADF0C6900AE32E4 /* CartTotalTableViewCell.xib */; };
+		85FCB2132ADFCAAD009F4B19 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB2122ADFCAAD009F4B19 /* AuthViewController.swift */; };
+		85FCB2162ADFCBF3009F4B19 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB2152ADFCBF3009F4B19 /* AuthViewModel.swift */; };
+		85FCB2182ADFCC01009F4B19 /* AuthValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB2172ADFCC01009F4B19 /* AuthValidator.swift */; };
+		85FCB21A2ADFD40A009F4B19 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCB2192ADFD40A009F4B19 /* AuthCoordinator.swift */; };
 		894AE75F288EC31600C19150 /* HTTPNetworkRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894AE75E288EC31600C19150 /* HTTPNetworkRoute.swift */; };
 		894AE761288EC34000C19150 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894AE760288EC34000C19150 /* HTTPMethod.swift */; };
 		894AE763288EC36500C19150 /* HTTPNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894AE762288EC36500C19150 /* HTTPNetworkError.swift */; };
@@ -79,6 +83,10 @@
 		85D5BD302ADF0C3900AE32E4 /* CartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableViewCell.xib; sourceTree = "<group>"; };
 		85D5BD372ADF0C6900AE32E4 /* CartTotalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotalTableViewCell.swift; sourceTree = "<group>"; };
 		85D5BD382ADF0C6900AE32E4 /* CartTotalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTotalTableViewCell.xib; sourceTree = "<group>"; };
+		85FCB2122ADFCAAD009F4B19 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		85FCB2152ADFCBF3009F4B19 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		85FCB2172ADFCC01009F4B19 /* AuthValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthValidator.swift; sourceTree = "<group>"; };
+		85FCB2192ADFD40A009F4B19 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		894AE75E288EC31600C19150 /* HTTPNetworkRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPNetworkRoute.swift; sourceTree = "<group>"; };
 		894AE760288EC34000C19150 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		894AE762288EC36500C19150 /* HTTPNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPNetworkError.swift; sourceTree = "<group>"; };
@@ -141,6 +149,7 @@
 			children = (
 				85D5BD182ADEBAC900AE32E4 /* Coordinator.swift */,
 				85D5BD1A2ADEBADD00AE32E4 /* AppCoordinator.swift */,
+				85FCB2192ADFD40A009F4B19 /* AuthCoordinator.swift */,
 				85D5BD1C2ADEBB1800AE32E4 /* HomeCoordinator.swift */,
 				85D5BD272ADEDD9500AE32E4 /* DetailCoordinator.swift */,
 				85D5BD1E2ADEBB2400AE32E4 /* CartCoordinator.swift */,
@@ -184,6 +193,23 @@
 				85D5BD382ADF0C6900AE32E4 /* CartTotalTableViewCell.xib */,
 			);
 			path = Cart;
+			sourceTree = "<group>";
+		};
+		85FCB2112ADFC9B1009F4B19 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				85FCB2122ADFCAAD009F4B19 /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		85FCB2142ADFCBE3009F4B19 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				85FCB2152ADFCBF3009F4B19 /* AuthViewModel.swift */,
+				85FCB2172ADFCC01009F4B19 /* AuthValidator.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		894AE75A288EC2C800C19150 /* Networking */ = {
@@ -305,6 +331,7 @@
 		89EEDFF2288EEBB70079E7C4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				85FCB2112ADFC9B1009F4B19 /* Auth */,
 				85D5BD2C2ADF0B7B00AE32E4 /* Cart */,
 				85D5BD232ADEDB7300AE32E4 /* Home */,
 				85D5BD262ADEDCFC00AE32E4 /* MovieDetails */,
@@ -316,6 +343,7 @@
 		89EEDFF3288EEBE40079E7C4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				85FCB2142ADFCBE3009F4B19 /* Auth */,
 				89EEDFF4288EEC110079E7C4 /* MovieViewModel.swift */,
 			);
 			path = ViewModel;
@@ -459,6 +487,7 @@
 				894AE765288EC38B00C19150 /* HTTPNetworkRequest.swift in Sources */,
 				85D5BD312ADF0C3900AE32E4 /* CartTableViewCell.swift in Sources */,
 				894AE777288ED07300C19150 /* MovieInfo.swift in Sources */,
+				85FCB21A2ADFD40A009F4B19 /* AuthCoordinator.swift in Sources */,
 				89EEDFFA288EF93B0079E7C4 /* MovieTableViewCell.swift in Sources */,
 				89EC43C9288E71A400E4EFFA /* ViewController.swift in Sources */,
 				894AE772288EC51D00C19150 /* Log.swift in Sources */,
@@ -467,10 +496,12 @@
 				85D5BD1F2ADEBB2400AE32E4 /* CartCoordinator.swift in Sources */,
 				894AE769288EC3DC00C19150 /* URLEncoder.swift in Sources */,
 				89EEDFF7288EEC460079E7C4 /* Bindable.swift in Sources */,
+				85FCB2162ADFCBF3009F4B19 /* AuthViewModel.swift in Sources */,
 				89EC43C5288E71A400E4EFFA /* AppDelegate.swift in Sources */,
 				85D5BD252ADEDBB700AE32E4 /* MoviewDetailsViewController.swift in Sources */,
 				894AE75F288EC31600C19150 /* HTTPNetworkRoute.swift in Sources */,
 				85D5BD282ADEDD9500AE32E4 /* DetailCoordinator.swift in Sources */,
+				85FCB2182ADFCC01009F4B19 /* AuthValidator.swift in Sources */,
 				894AE76B288EC40200C19150 /* Result.swift in Sources */,
 				85D5BD2E2ADF0BA200AE32E4 /* CartViewController.swift in Sources */,
 				894AE767288EC3B200C19150 /* HTTPNetworkResponse.swift in Sources */,
@@ -485,6 +516,7 @@
 				89EC43C7288E71A400E4EFFA /* SceneDelegate.swift in Sources */,
 				85D5BD392ADF0C6900AE32E4 /* CartTotalTableViewCell.swift in Sources */,
 				85D5BD1D2ADEBB1800AE32E4 /* HomeCoordinator.swift in Sources */,
+				85FCB2132ADFCAAD009F4B19 /* AuthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
