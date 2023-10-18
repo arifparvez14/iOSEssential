@@ -11,7 +11,17 @@ protocol ClientServiceProtocol {
 
 struct MockClientService: ClientServiceProtocol {
     func searchMovie(query: String?, _ completion: @escaping (Result<MovieInfo>) -> ()) {
-        completion(.failure(HTTPNetworkError.decodingFailed))
+        var result = Result.success(HTTPNetworkError.success.rawValue)
+        let errorResult = Result<Any>.failure(HTTPNetworkError.serverSideError as Error)
+        
+        let movieInfo = loadJsonFrom(fileName: "MockMovieResponse")!
+        
+        switch errorResult {
+        case .success:
+            completion(.success(movieInfo))
+        case .failure:
+            completion(.failure(HTTPNetworkError.serverSideError))
+        }
     }
 }
 

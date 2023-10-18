@@ -15,6 +15,7 @@ final class AuthUnitTest: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = AuthViewModel(authValidator: AuthValidator())
+        
     }
 
     override func tearDownWithError() throws {
@@ -31,7 +32,6 @@ final class AuthUnitTest: XCTestCase {
         
         //then
         XCTAssertTrue(result, AuthError.nameValidationError.rawValue)
-        
     }
     
     func testEmailValidator() {

@@ -31,7 +31,10 @@ class AuthViewModel: AuthViewModelProtocol {
     
     init(authValidator: AuthValidatorProtocol) {
         self.authValidator = authValidator
+        //readJSONFile()
     }
+    
+    
     
     func submit(authCredentials: AuthCredentials, onCompletion: (String?) -> ()) {
         if !authValidator.nameValid(name: authCredentials.name) {

@@ -31,3 +31,18 @@ let labelFontSize: CGFloat = 17
 
 //MARK: Others
 let imageCache = NSCache<AnyObject, UIImage>()
+
+func loadJsonFrom(fileName: String) -> MovieInfo? {
+    do {
+       if let bundlePath = Bundle.main.path(forResource: "MockMovieResponse", ofType: "json"),
+       let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+             
+          // Decoding the Product type from JSON data using JSONDecoder() class.
+          let movieInfo = try JSONDecoder().decode(MovieInfo.self, from: jsonData)
+         return movieInfo
+       }
+    } catch {
+       return nil
+    }
+    return nil
+}
