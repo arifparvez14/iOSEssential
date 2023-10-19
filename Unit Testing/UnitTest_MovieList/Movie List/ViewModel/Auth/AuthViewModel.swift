@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 protocol AuthViewDelegate: AnyObject {
     func validationError(errorMessage: String)
@@ -20,6 +22,13 @@ protocol AuthViewModelProtocol {
     var coordinatorDelegate: AuthCoordinationDelegate? { get set }
     func submit(authCredentials: AuthCredentials)
     func submit(authCredentials: AuthCredentials, onCompletion: (String?) -> ())
+    func getUserData()
+}
+
+struct UserModel{
+    var name: String
+    var email: String
+    var password: String
 }
 
 
@@ -28,13 +37,11 @@ class AuthViewModel: AuthViewModelProtocol {
     weak var viewDelegate: AuthViewDelegate?
     weak var coordinatorDelegate: AuthCoordinationDelegate?
     var authValidator: AuthValidatorProtocol
+    var dataRepository: Repository?
     
     init(authValidator: AuthValidatorProtocol) {
         self.authValidator = authValidator
-        //readJSONFile()
     }
-    
-    
     
     func submit(authCredentials: AuthCredentials, onCompletion: (String?) -> ()) {
         if !authValidator.nameValid(name: authCredentials.name) {
@@ -47,6 +54,9 @@ class AuthViewModel: AuthViewModelProtocol {
             onCompletion(AuthError.matchPasswordValidationError.rawValue)
         } else {
             UserDefaults.standard.set(true, forKey: "isLoggedIn")
+            let entity = UserModel(name: authCredentials.name ?? "", email: authCredentials.email ?? "", password: authCredentials.password ?? "")
+            //dataRepository?.addUser(entity: entity)
+            
             coordinatorDelegate?.authCoordinatorDidFinish(viewModel: self)
             onCompletion(nil)
         }
@@ -63,8 +73,19 @@ class AuthViewModel: AuthViewModelProtocol {
         } else if !authValidator.doPasswordsMatch(password: authCredentials.password, repeatPassword: authCredentials.confirmPassword) {
             viewDelegate?.validationError(errorMessage: AuthError.matchPasswordValidationError.rawValue)
         } else {
+            let entity = UserModel(name: authCredentials.name ?? "", email: authCredentials.email ?? "", password: authCredentials.password ?? "")
+            //dataRepository?.addUser(entity: entity)
+            
             UserDefaults.standard.set(true, forKey: "isLoggedIn")
-            coordinatorDelegate?.authCoordinatorDidFinish(viewModel: self)
+            self.coordinatorDelegate?.authCoordinatorDidFinish(viewModel: self)
+            
+        }
+    }
+    
+    func getUserData(){
+        let savedData = dataRepository?.fetchUser()
+        if let data = savedData {
+            print(data.count)
         }
     }
 }

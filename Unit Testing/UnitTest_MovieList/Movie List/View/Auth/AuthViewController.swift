@@ -10,6 +10,7 @@ import UIKit
 class AuthViewController: UIViewController {
     
     @IBOutlet weak var nameField: UITextField!
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
@@ -43,8 +44,12 @@ class AuthViewController: UIViewController {
                 errorMessageLabel.text = error
             }
         }
-        
     }
+    
+    @IBAction func printCoreData(_ sender: Any) {
+        viewModel?.getUserData()
+    }
+    
 }
 
 extension AuthViewController: AuthViewDelegate {

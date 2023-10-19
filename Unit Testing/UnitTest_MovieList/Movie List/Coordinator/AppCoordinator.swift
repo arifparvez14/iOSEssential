@@ -43,7 +43,9 @@ class AppCoordinator: Coordinator {
 extension AppCoordinator: AuthCoordinatorDelegate {
     func authCoordinatorDidFinish(authCoordinator: AuthCoordinator) {
         coordinator[AUTH_KEY] = nil
-        showHome()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10)  {
+            self.showHome()
+        }
     }
 }
 

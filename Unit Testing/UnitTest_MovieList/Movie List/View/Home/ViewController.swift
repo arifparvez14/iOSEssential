@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         self.navigationItem.searchController = self.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.searchController.searchBar.delegate = self
+        //self.searchController.identifi
     }
 
     private func bindViewModelData() {

@@ -24,6 +24,7 @@ class AuthCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController {
             let viewModel = AuthViewModel(authValidator: AuthValidator())
+            viewModel.dataRepository = DataRepository()
             vc.viewModel = viewModel
             viewModel.coordinatorDelegate = self
             navigationController.pushViewController(vc, animated: true)

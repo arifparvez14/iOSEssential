@@ -190,7 +190,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Iav-uL-C4s" userLabel="top Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="298"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C2L-KD-GMf" userLabel="email Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C2L-KD-GMf" userLabel="Name Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="62.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsW-y8-A5g">
@@ -199,14 +199,15 @@
                                                         <color key="textColor" systemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="xCW-qf-pUd">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a9i-6t-8OC">
                                                         <rect key="frame" x="0.0" y="28.5" width="382" height="34"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="name"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t37-lb-RGp" userLabel="email Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t37-lb-RGp" userLabel="Email Stack View">
                                                 <rect key="frame" x="0.0" y="78.5" width="382" height="62.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NqI-S6-5Om">
@@ -217,12 +218,13 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="EGh-I4-2PC">
                                                         <rect key="frame" x="0.0" y="28.5" width="382" height="34"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="email"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="70v-V4-TJX" userLabel="pass Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="70v-V4-TJX" userLabel="Password Stack View">
                                                 <rect key="frame" x="0.0" y="157" width="382" height="62.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQf-WP-ho7">
@@ -233,12 +235,13 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="GRI-DV-tjF">
                                                         <rect key="frame" x="0.0" y="28.5" width="382" height="34"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="password"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iug-uO-fU0" userLabel="pass Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iug-uO-fU0" userLabel="PassswordConfirm Stack View">
                                                 <rect key="frame" x="0.0" y="235.5" width="382" height="62.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv1-wZ-phw">
@@ -249,6 +252,7 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="xX2-nD-XZ3">
                                                         <rect key="frame" x="0.0" y="28.5" width="382" height="34"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="confirmPassword"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
@@ -259,6 +263,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWe-Z6-kKo">
                                         <rect key="frame" x="0.0" y="327" width="382" height="34.5"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="login"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Login"/>
@@ -274,21 +279,35 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEu-Nl-uf9">
+                                <rect key="frame" x="16" y="523" width="382" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HMg-KI-fYS"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Print Core Data"/>
+                                <connections>
+                                    <action selector="printCoreData:" destination="Nxs-gf-IzL" eventType="touchUpInside" id="Vry-gE-9Vt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="17B-Sr-3gW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="SEu-Nl-uf9" firstAttribute="leading" secondItem="17B-Sr-3gW" secondAttribute="leading" constant="16" id="6Xl-rP-6S6"/>
                             <constraint firstItem="17B-Sr-3gW" firstAttribute="trailing" secondItem="2S1-C7-xLZ" secondAttribute="trailing" constant="16" id="IeJ-5c-Qfm"/>
                             <constraint firstItem="2S1-C7-xLZ" firstAttribute="leading" secondItem="17B-Sr-3gW" secondAttribute="leading" constant="16" id="Oxf-gD-Oha"/>
+                            <constraint firstItem="17B-Sr-3gW" firstAttribute="trailing" secondItem="SEu-Nl-uf9" secondAttribute="trailing" constant="16" id="eAq-Ib-1Ds"/>
+                            <constraint firstItem="SEu-Nl-uf9" firstAttribute="top" secondItem="2S1-C7-xLZ" secondAttribute="bottom" constant="24" id="ekr-zH-dUR"/>
                             <constraint firstItem="2S1-C7-xLZ" firstAttribute="top" secondItem="17B-Sr-3gW" secondAttribute="top" constant="40" id="eq7-LZ-zfM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="confirmPasswordField" destination="xX2-nD-XZ3" id="3Db-ng-0TC"/>
-                        <outlet property="emailField" destination="EGh-I4-2PC" id="rbT-FU-Td8"/>
+                        <outlet property="emailField" destination="EGh-I4-2PC" id="hd6-Qs-Mez"/>
                         <outlet property="errorMessageLabel" destination="vtX-Gj-heO" id="tvq-DX-1xx"/>
                         <outlet property="loginButton" destination="aWe-Z6-kKo" id="kSf-gD-Myh"/>
-                        <outlet property="nameField" destination="xCW-qf-pUd" id="qOm-o8-46W"/>
+                        <outlet property="nameField" destination="a9i-6t-8OC" id="oA4-o7-5iZ"/>
                         <outlet property="passwordField" destination="GRI-DV-tjF" id="g4g-PS-UfZ"/>
                     </connections>
                 </viewController>

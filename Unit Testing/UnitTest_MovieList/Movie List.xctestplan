@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "29793508-0800-4AD8-B87B-7FF0EAAE5C46",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Movie List.xcodeproj",
+      "identifier" : "89EC43C0288E71A400E4EFFA",
+      "name" : "Movie List"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Movie List.xcodeproj",
+        "identifier" : "89EC43D6288E71A500E4EFFA",
+        "name" : "Movie ListTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Movie List.xcodeproj",
+        "identifier" : "89EC43E0288E71A500E4EFFA",
+        "name" : "Movie ListUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

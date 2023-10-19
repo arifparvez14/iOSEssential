@@ -11,15 +11,17 @@ import XCTest
 final class NetworkTestUnitTest: XCTestCase {
     var sut: URLSession!
     let networkMonitor = NetworkMonitor.shared
+    var movieSut: ClientServiceProtocol!
 
     override func setUpWithError() throws {
-      try super.setUpWithError()
-      sut = URLSession(configuration: .default)
+        try super.setUpWithError()
+        sut = URLSession(configuration: .default)
+        movieSut = ClientService()
     }
 
     override func tearDownWithError() throws {
-      sut = nil
-      try super.tearDownWithError()
+        sut = nil
+        try super.tearDownWithError()
     }
     
     func testValidApiCallGetsHTTPStatusCode200() throws {
@@ -75,6 +77,30 @@ final class NetworkTestUnitTest: XCTestCase {
         // then
         XCTAssertNil(responseError)
         XCTAssertEqual(statusCode, 200)
+    }
+    
+    func testMovieApiCall() throws {
+        
+        try XCTSkipUnless(NetworkMonitor.shared.isReachable, "Network connectivity needed for this test.")
+        
+        //given
+        let promise = expectation(description: "Api call success")
+        
+        //when
+        movieSut.searchMovie(query: nil) { result in
+
+            //then
+            switch result {
+            case .success(let movieInfo):
+                XCTAssertGreaterThan(movieInfo.results.count, 0, "Movie data not fetched properly")
+                promise.fulfill()
+            case .failure(let error):
+                XCTAssertNil(error, "\(error.localizedDescription)")
+                promise.fulfill()
+            }
+        }
+        
+        wait(for: [promise], timeout: 5)
     }
 }
 
