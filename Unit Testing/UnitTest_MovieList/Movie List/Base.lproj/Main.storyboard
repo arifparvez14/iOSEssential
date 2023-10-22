@@ -237,7 +237,7 @@
                                                         <rect key="frame" x="0.0" y="28.5" width="382" height="34"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="password"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -254,7 +254,7 @@
                                                         <rect key="frame" x="0.0" y="28.5" width="382" height="34"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="confirmPassword"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>

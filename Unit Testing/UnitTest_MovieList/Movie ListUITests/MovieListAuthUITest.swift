@@ -33,30 +33,24 @@ class Movie_ListUITests: XCTestCase {
         XCTAssertTrue(confirmPasswordTextField.isEnabled, "Confirm password text field not enable for user interaction")
     }
     
-    func testAuth() throws {
-        
-        let app = XCUIApplication()
-        app.textFields["name"].tap()
+    func testLoginFlow() {
+        let nameTextField = app.textFields["name"]
+        nameTextField.tap()
+        nameTextField.typeText("Ariful")
         
         let emailTextField = app.textFields["email"]
         emailTextField.tap()
-        emailTextField.tap()
+        emailTextField.typeText("a@a.com")
         
-        let passwordSecureTextField = app.secureTextFields["password"]
+        let passwordSecureTextField = app.textFields["password"]
         passwordSecureTextField.tap()
-        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("12345678")
         
-        let confirmpasswordSecureTextField = app.secureTextFields["confirmPassword"]
+        let confirmpasswordSecureTextField = app.textFields["confirmPassword"]
         confirmpasswordSecureTextField.tap()
-        confirmpasswordSecureTextField.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["login"]/*[[".buttons[\"Login\"]",".buttons[\"login\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        confirmpasswordSecureTextField.typeText("1234567")
         
-        let movieListNavigationBar = app.navigationBars["Movie List"]
-        let searchSearchField = movieListNavigationBar.searchFields["Search"]
-        searchSearchField.tap()
-        searchSearchField.tap()
-        movieListNavigationBar.buttons["love"].tap()
-        app.navigationBars["Movie_List.CartView"].buttons["Movie List"].tap()
-            
+        let loginButton = app.buttons["login"]
+        loginButton.tap()
     }
 }
